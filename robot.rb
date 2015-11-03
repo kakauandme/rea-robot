@@ -117,10 +117,16 @@ class Robot
 		end
 	end
 
+	def welcomeMessage
+		"\nHi human! I'm #{@name} and you can conrol me with several commands. \nBy typing PLACE X,Y, DIRECTION where X & Y are cordinates on a #{@@table_width} by #{@@table_height} table I will be placed on and DIRECTION is cardinal direction I will be facing. \nType MOVE and I'll go one step forward. \nLEFT & RIGHT will change my facing direction accordignly.\nFinnaly, REPORT will print my current location. \nOh, almost forget, if you are done - just type EXIT. \nEnjoy!\n"
+	end
+
 end
 
 
 r = Robot.new("Reabot", 5,5)
+
+
 
 if ARGV.length > 0
 	filename = ARGV.first
@@ -128,7 +134,7 @@ if ARGV.length > 0
 		r.listen(line.chomp.upcase)
 	end
 end
-
+puts r.welcomeMessage
 while (input = STDIN.gets.chomp.upcase) != "EXIT"	
 	r.listen(input)
 end
