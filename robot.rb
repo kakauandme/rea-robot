@@ -99,4 +99,20 @@ end
 
 r = Robot.new(5,5)
 
+while (input = gets.chomp.upcase) != "EXIT"
+	case input
+	when "REPORT"
+		r.report
+	when "MOVE"
+		r.move
+	when "LEFT"
+		r.left
+	when "RIGHT"
+		r.right
+	when /\APLACE\s\d,\s?\d,\s?[a-zA-Z]{4,5}\z/i
+		_coords = input.scan(/\d/i)
+		_direction = input.scan(/[a-zA-Z]{4,5}\z/i)[0]
+		r.place(_coords[0].to_i, _coords[1].to_i,_direction)
+	end
 
+end
