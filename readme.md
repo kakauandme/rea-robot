@@ -8,30 +8,24 @@
   robot falling from the table must be prevented, however further valid
   movement commands must still be allowed.
 
+### Get Started
 
- ### Get Started
-
- Clone this repository, where `rea-robot` is the name of the folder.
-
-
+Clone this repository
 ```bash
-git clone https://github.com/kakauandme/gamesApp.git rea-robot
+git clone https://github.com/kakauandme/rea-robot.git rea-robot
 ```
 
 Change into the directory.
-
 ```bash
 cd rea-robot
 ```
 
-To run the robot by using `ruby` command. This will compile the code and start the robot. 
-
+To run the robot use `ruby` command. This will compile the code and start the robot. 
 ```bash
 ruby robot.rb
 ```
 
-To use a test script - pass filename as an argument to the compiler 
-
+To use a test script - pass `filename` as an argument to the compiler.
 ```bash
 ruby robot.rb test.txt
 ```
