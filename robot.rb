@@ -50,6 +50,30 @@ class Robot
 		end
 	end
 
+	def move
+		if self.isPlaceed
+			case @@directions[@facing]
+			when "NORTH"
+				if (@y+1) < @@table_height
+					@y+=1
+				end
+			when "SOUTH"
+				if (@y-1) >= 0
+					@y-=1
+				end
+			when "EAST"
+				if (@x+1) < @@table_width
+					@x+=1
+				end
+			when "WEST"
+				if (@x-1 >= 0)
+					@x-=1
+				end
+			end
+		end
+	end
+
+	
 
 end
 
