@@ -111,9 +111,9 @@ class Robot
 		when "RIGHT"
 			self.right
 		when /\APLACE\s\d,\s?\d,\s?[a-zA-Z]{4,5}\z/i
-			_coords = _input.scan(/\d/i)
-			_direction = _input.scan(/[a-zA-Z]{4,5}\z/i)[0]
-			self.place(_coords[0].to_i, _coords[1].to_i,_direction)
+			coords = _input.scan(/\d/i)
+			direction = _input.scan(/[a-zA-Z]{4,5}\z/i)[0]
+			self.place(coords[0].to_i, coords[1].to_i,direction)
 		end
 	end
 
@@ -122,15 +122,13 @@ end
 
 r = Robot.new("Reabot", 5,5)
 
-
 if ARGV.length > 0
 	filename = ARGV.first
-	puts filename
 	File.readlines(filename).each do |line|
-		r.listen(line)
+		r.listen(line.chomp.upcase)
 	end
 end
 
-while (input = gets.chomp.upcase) != "EXIT"	
+while (input = STDIN.gets.chomp.upcase) != "EXIT"	
 	r.listen(input)
 end
