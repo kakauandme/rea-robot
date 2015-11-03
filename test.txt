@@ -1,1 +1,47 @@
-
+report
+move
+report
+left
+report
+right
+report
+place 0,5,NORTH
+report
+place 5,5,EAST
+report
+place 4,0,EAST
+report
+place 0,4,WEST
+report
+place 4, 4, soUth
+report
+move
+report
+move
+report
+move
+report
+move
+report
+move
+report
+left
+report
+move
+report
+right
+report
+right
+report
+move
+report
+move
+report
+move
+report
+move
+report
+move
+report
+place 2, 2, North
+report
