@@ -7,7 +7,13 @@ class Robot
 	@@directions = ["NORTH", "EAST", "SOUTH", "WEST"]
 
 
-	def initialize(_width, _height)
+	def initialize(_name, _width, _height)
+
+		if !(_name.is_a? String)
+			raise "Name of the Robot should be a string";
+		end
+
+		@name = _name
 
 		if !(_width.is_a? Integer) || _width <= 0 || !(_height.is_a? Integer)  || _height <=0 
 			raise "Table width & height should be positive integers";
@@ -46,7 +52,7 @@ class Robot
 
 	def report
 		if self.isPlaceed
-			puts "Robot is located at [#{@x},#{@y}] and facing #{@@directions[@facing]}"
+			puts "#{@name} is located at [#{@x},#{@y}] and facing #{@@directions[@facing]}"
 		end
 	end
 
@@ -94,25 +100,28 @@ class Robot
 		
 	end
 
+	def listen(_input)
+		case _input
+		when "REPORT"
+			self.report
+		when "MOVE"
+			self.move
+		when "LEFT"
+			self.left
+		when "RIGHT"
+			self.right
+		when /\APLACE\s\d,\s?\d,\s?[a-zA-Z]{4,5}\z/i
+			_coords = _input.scan(/\d/i)
+			_direction = _input.scan(/[a-zA-Z]{4,5}\z/i)[0]
+			self.place(_coords[0].to_i, _coords[1].to_i,_direction)
+		end
+	end
+
 end
 
 
-r = Robot.new(5,5)
+r = Robot.new("Reabot", 5,5)
 
-while (input = gets.chomp.upcase) != "EXIT"
-	case input
-	when "REPORT"
-		r.report
-	when "MOVE"
-		r.move
-	when "LEFT"
-		r.left
-	when "RIGHT"
-		r.right
-	when /\APLACE\s\d,\s?\d,\s?[a-zA-Z]{4,5}\z/i
-		_coords = input.scan(/\d/i)
-		_direction = input.scan(/[a-zA-Z]{4,5}\z/i)[0]
-		r.place(_coords[0].to_i, _coords[1].to_i,_direction)
-	end
-
+while (input = gets.chomp.upcase) != "EXIT"	
+	r.listen(input)
 end
