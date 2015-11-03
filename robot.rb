@@ -44,11 +44,16 @@ class Robot
 		(!(@x.nil?) && !(@y.nil?) && !(@facing.nil?) && @x >= 0 && @x < @@table_width && @y >= 0 && @y < @@table_height)
 	end
 
+	def report
+		if self.isPlaceed
+			puts "Robot is located at [#{@x},#{@y}] and facing #{@@directions[@facing]}"
+		end
+	end
 
-	
 
 end
 
 
 r = Robot.new(5,5)
+
 
