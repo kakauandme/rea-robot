@@ -122,6 +122,15 @@ end
 
 r = Robot.new("Reabot", 5,5)
 
+
+if ARGV.length > 0
+	filename = ARGV.first
+	puts filename
+	File.readlines(filename).each do |line|
+		r.listen(line)
+	end
+end
+
 while (input = gets.chomp.upcase) != "EXIT"	
 	r.listen(input)
 end
