@@ -73,7 +73,26 @@ class Robot
 		end
 	end
 
-	
+	def left
+		if self.isPlaceed
+			if @facing==0
+				@facing = @@directions.length-1
+			else
+				@facing-=1
+			end
+		end
+	end
+
+	def right
+		if self.isPlaceed
+			if @facing == (@@directions.length-1)
+				@facing = 0
+			else
+				@facing+=1
+			end
+		end
+		
+	end
 
 end
 
