@@ -1,67 +1,54 @@
-module Direction
-	NORTH = 0
-	EAST = 1
-	SOUTH = 2
-	WEST = 3
-end
-
-class Robot
-
-	
+class Robot	
 
 	@x = nil
 	@y = nil
-	@direction = nil
+	@facing = nil
+
+	@@directions = ["NORTH", "EAST", "SOUTH", "WEST"]
 
 
-	def initialize(width, height)
+	def initialize(_width, _height)
 
-		if !(width.is_a? Integer) || width <= 0 || !(height.is_a? Integer)  || height <=0 
+		if !(_width.is_a? Integer) || _width <= 0 || !(_height.is_a? Integer)  || _height <=0 
 			raise "Table width & height should be positive integers";
 		end
 
-		@@table_width = width;
-		@@table_height = width;
+		@@table_width = _width;
+		@@table_height = _width;
 	end
 
-	def position(_x, _y, _direction)
+	
 
-		if _x >= 0 && _x < self.table_width && _y >= 0 && _y < self.table_height
-			self.x = _x
-			self.y = _y
+	def place(_x, _y, _facing)
+		if (_x.is_a? Integer) && (_y.is_a? Integer) && _x >= 0 && _x < @@table_width && _y >= 0 && _y < @@table_height
+			@x = _x
+			@y = _y
+		else
+			@x = nil
+			@y = nil
 		end
-		case _direction
-			when 'NORTH'
-			  self.direction = Direction.NORTH
-			when 'EAST'
-			   self.direction = Direction.EAST
-			when 'SOUTH'
-			   self.direction = Direction.SOUTH
-			when 'WEST'
-			   self.direction = Direction.WEST
-			else
-			  self.direction = nil
-		end		
+
+		if (_facing.is_a? String)
+			@@directions.each_with_index do |direction, index|
+				if _facing.upcase == direction
+					@facing = index
+					break;
+				end
+			end
+		else
+			@facing = nil
+		end
+	end
+
+	def isPlaceed
+		(!(@x.nil?) && !(@y.nil?) && !(@facing.nil?) && @x >= 0 && @x < @@table_width && @y >= 0 && @y < @@table_height)
 	end
 
 
-	def isPositioned
-		return (self.x && self.y && self.direction && self.x >= 0 && self.x < self.table_width && self.y >= 0 && self.y < self.table_height)
-	end
-
-	def table_width
-		@@table_width
-	end
-	def table_height
-		@@table_height
-	end
-
-
-
+	
 
 end
 
 
 r = Robot.new(5,5)
 
-puts r.table_width
