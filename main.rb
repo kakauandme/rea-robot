@@ -1,18 +1,18 @@
 require_relative 'includes/robot' 
-r = Robot.new("Reabot", 5,5)
+robot = Robot.new("Reabot", 5,5)
 
 
 #read test file
 if ARGV.length > 0
 	filename = ARGV.first
 	File.readlines(filename).each do |line|
-		r.listen(line.chomp.upcase)
+		robot.listen(line.chomp.upcase)
 	end
 end
 
-puts r.welcome
+puts robot.welcome
 
 #get input from STD and pass it to robot or exit
 while (input = STDIN.gets.chomp.upcase) != "EXIT"	
-	r.listen(input)
+	robot.listen(input)
 end
