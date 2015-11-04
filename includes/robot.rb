@@ -129,7 +129,7 @@ class Robot
 		when "RIGHT"
 			self.right
 
-		#matches placing input structure
+		#match placing format
 		when /\APLACE\s\d,\s?\d,\s?[a-zA-Z]{4,5}\z/i
 			coords = _input.scan(/\d/i)
 			direction = _input.scan(/[a-zA-Z]{4,5}\z/i)[0]
