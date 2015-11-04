@@ -9,20 +9,21 @@ class Robot
 	#constructor (String, Integer, Integer)
 	def initialize(_name, _width, _height)
 
-		if !(_name.is_a? String)
+		if (_name.is_a? String)
+			#set robot's name
+			@name = _name
+		else
 			raise "Name of the Robot should be a string";
-		end
+		end		
 
-		#set robot's name
-		@name = _name
-
-		if !(_width.is_a? Integer) || _width <= 0 || !(_height.is_a? Integer)  || _height <=0 
+		if (_width.is_a? Integer) && _width > 0 && (_height.is_a? Integer) && _height > 0 
+			#set table dimensions
+			@@table_width = _width
+			@@table_height = _width
+		else
 			raise "Table width & height should be positive integers";
 		end
-
-		#set table dimensions
-		@@table_width = _width;
-		@@table_height = _width;
+		
 	end
 
 	
