@@ -103,6 +103,24 @@ Robot.prototype.right = function() {
 	}
 };
 
+Robot.prototype.listen = function(_input){
+	if(_input === "REPORT"){
+		this.report();
+	}else if(_input === "MOVE"){
+		this.move();
+	}else if(_input === "LEFT"){
+		this.left();
+	}else if(_input === "RIGHT"){
+		this.right();
+	}else {
+		var pattern = /^PLACE\s(\d),\s?(\d),\s?([a-zA-Z]{4,5})$/i;
+		if(pattern.test(_input)){
+			var args = _input.match(pattern)
+			this.place(parseInt(args[1]), parseInt(args[2]), args[3]);
+		}
+	}
+}
+
 
 Robot.prototype.welcome= function() {
 	console.log("\nHi human! I'm "+this.name+" and you can conrol me with several commands. \nBy typing PLACE X,Y, DIRECTION where X & Y are cordinates on a "+this.table_width+" by "+this.table_height+" table I will be placed on and DIRECTION is cardinal direction I will be facing. \nType MOVE and I'll go one step forward. \nLEFT & RIGHT will change my facing direction accordignly.\nFinnaly, REPORT will print my current location. \nOh, almost forget, if you are done - just type EXIT. \nEnjoy!\n");
