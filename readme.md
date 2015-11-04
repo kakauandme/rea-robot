@@ -25,7 +25,17 @@ To run the robot use `ruby` command. This will compile the code and start the ro
 ruby main.rb
 ```
 
+Alternatively you can use `node` to compile JavaScript version
+```bash
+node main.js
+```
+
 To use a test script - pass `filename` as an argument to the compiler.
 ```bash
 ruby main.rb test.txt
+```
+
+or
+```bash
+node main.js test.txt
 ```
