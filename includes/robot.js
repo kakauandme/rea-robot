@@ -48,8 +48,6 @@ Robot.prototype.report = function() {
 	if(this.isPlaced()){
 
 		console.log( this.name + " is located at ["+this.x+","+this.y+"] and facing " + this.directions[this.facing]);
-	}else{
-		console.log("not palced");
 	}
 };
 
