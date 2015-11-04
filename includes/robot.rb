@@ -39,14 +39,19 @@ class Robot
 
 		if (_facing.is_a? String)
 
+			flag = false
 			#loop through all possible directions
 			@@directions.each_with_index do |direction, index|
 
 				#assign if it matches
 				if _facing.upcase == direction
 					@facing = index
+					flag = true
 					break;
 				end
+			end
+			if !flag
+				@facing = nil
 			end
 		else
 			@facing = nil
@@ -82,7 +87,7 @@ class Robot
 					@x+=1
 				end
 			when "WEST"
-				if (@x-1 >= 0)
+				if (@x-1) >= 0
 					@x-=1
 				end
 			end
