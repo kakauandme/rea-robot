@@ -22,10 +22,10 @@ cd rea-robot
 
 To run the robot use `ruby` command. This will compile the code and start the robot. 
 ```bash
-ruby robot.rb
+ruby main.rb
 ```
 
 To use a test script - pass `filename` as an argument to the compiler.
 ```bash
-ruby robot.rb test.txt
+ruby main.rb test.txt
 ```
